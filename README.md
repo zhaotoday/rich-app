@@ -29,3 +29,13 @@ define('STATIC_VERSION', 'v1.1');
 ```php
 define('REDIS_EXPIRE', 60);
 ```
+
+## 数据库
+- categories 为可选的通用分类表，每个业务模块都可以引用，用 model 字段来区分业务模块。  
+- 通用字段
+```
+id         [自增 ID]
+language   [语言标识，开发国际化项目时有用]
+created_at [发布时间]
+updated_at [更新时间]
+```
