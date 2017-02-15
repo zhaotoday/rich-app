@@ -14,6 +14,12 @@ git clone https://git.oschina.net/zhaojintian/cms.git
 ## 移动端检测
 在控制器构造方法中调用 $this->_detect(); 可识别当前访问是否是来自移动端，并做相应跳转。
 
+## 访问图片文件
+```
+/images/1              [访问 ID 为 1 的图片文件
+/images/1?w=200&h=300  [访问 ID 为 1 的图片，并按高度 200、宽度 300 等比缩放]
+```
+
 ## 配置
 修改 application/config/constants.php。
 
