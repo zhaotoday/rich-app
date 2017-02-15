@@ -39,3 +39,22 @@ language   [语言标识，开发国际化项目时有用]
 created_at [发布时间]
 updated_at [更新时间]
 ```
+
+## 模型
+```php
+/**
+ * 文章模型
+ */
+class Articles_Model extends MY_Model
+{
+  /**
+   * 构造方法
+   */
+  function __construct()
+  {
+    parent::__construct(array(
+      'table' => 'articles'
+    ));
+  }
+}
+```
