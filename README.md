@@ -25,5 +25,7 @@ define('CDN', '');
 define('STATIC_VERSION', 'v1.1');
 ```
 #### redis 过期时间
-配置 redis
+配置 redis 缓存过期时间，单位为：秒。
+```php
 define('REDIS_EXPIRE', 60);
+```
