@@ -8,6 +8,8 @@ PHP rich app 是一套基于 CodeIgniter 的轻量级 PHP MVC 框架，用于团
 ```
 git clone https://git.oschina.net/zhaojintian/cms.git
 ```
+## redis 缓存
+框架采用 redis 来减轻数据库访问压力，如果当前服务器的 PHP 环境未安装 redis 扩展，则不启用 redis 缓存。
 
 ## 配置
 修改 application/config/constants.php。
@@ -17,10 +19,11 @@ git clone https://git.oschina.net/zhaojintian/cms.git
 ```php
 define('CDN', '');
 ```
-
-// 静态文件版本号
+#### 静态文件版本号
+静态文件变更时，需修改此配置，以清除浏览器缓存。
+```php
 define('STATIC_VERSION', 'v1.1');
-// 输出缓存过期时间，单位 s
-define('OUTPUT_CACHE_EXPIRE', 600);
-// redis 过期时间，单位 s
+```
+#### redis 过期时间
+配置 redis
 define('REDIS_EXPIRE', 60);
