@@ -9,7 +9,7 @@ PHP rich app 是一套基于 CodeIgniter 的轻量级 PHP MVC 框架，用于团
 git clone https://git.oschina.net/zhaojintian/cms.git
 ```
 ## redis 缓存
-框架采用 redis 来减轻数据库访问压力，如果当前服务器的 PHP 环境未安装 redis 扩展，则不启用 redis 缓存。
+框架采用 redis 来减轻数据库访问压力，如果当前服务器的 PHP 环境未安装 redis 扩展，则不启用 redis 缓存。注意，如果访问时响应时间较长，请检查是否已启动 redis 服务。
 
 ## 移动端检测
 在控制器构造方法中调用 $this->_detect(); 可识别当前访问是否是来自移动端，并做相应跳转。
