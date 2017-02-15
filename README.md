@@ -67,3 +67,9 @@ class Articles_Model extends MY_Model
   }
 }
 ```
+
+## 控制器
+待续
+
+## 视图
+待续
