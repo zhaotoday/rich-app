@@ -12,7 +12,7 @@ https://www.richapp.cn/
 git clone https://git.oschina.net/zhaojintian/cms.git
 ```
 
-## 现有业务模块
+## 业务模块
 - 分类（categories）
 - 文章（articles）
 - 文件（files）
