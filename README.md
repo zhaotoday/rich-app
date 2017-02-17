@@ -8,7 +8,7 @@ PHP rich app 是一套基于 CodeIgniter 的轻量级 PHP MVC 框架，用于团
 https://www.richapp.cn/
 
 ## 案例
-https://www.lightblog.cn/
+https://www.zjt.me/
 
 ## 下载代码
 ```
