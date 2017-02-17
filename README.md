@@ -50,7 +50,7 @@ updated_at [更新时间]
 ```
 
 ## RESTful API 服务
-如果接口需要鉴权，则需要添加：
+如果接口需要鉴权，请在方法开头添加代码：
 ```php
 if (!$this->_valid()) {
   $this->_responseValidError();
