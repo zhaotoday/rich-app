@@ -10,7 +10,15 @@ git clone https://git.oschina.net/zhaojintian/cms.git
 ```
 
 ## 现有业务模块
-分类（categories）、文章（articles）、文件（files）、商铺（shops）、商品（commodities）、订单（orders）、岗位（jobs）、会员（users）、管理员（managers）。
+- 分类（categories）
+- 文章（articles）
+- 文件（files）
+- 商铺（shops）
+- 商品（commodities）
+- 订单（orders）
+- 岗位（jobs）
+- 会员（users）
+- 管理员（managers）。
 
 ## redis 缓存
 框架采用 redis 来减轻数据库访问压力，如果当前服务器的 PHP 环境未安装 redis 扩展，则不启用 redis 缓存。注意，如果访问页面响应时间较长，请检查服务器是否已启动 redis 服务。
