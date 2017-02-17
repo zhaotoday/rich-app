@@ -49,6 +49,16 @@ created_at [发布时间]
 updated_at [更新时间]
 ```
 
+## RESTful API 服务
+如果接口需要鉴权，则需要添加：
+```php
+if (!$this->_valid()) {
+  $this->_responseValidError();
+} else {
+  // do something.
+}
+```
+
 ## 模型
 ```php
 /**
