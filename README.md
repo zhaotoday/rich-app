@@ -40,7 +40,7 @@ define('REDIS_EXPIRE', 60);
 ```
 
 ## 数据库
-categories 为可选的通用分类表，每个业务模块都可以引用，用 model 字段来区分业务模块。  
+categories 为可选的通用分类表，每个业务模块都可以引用，用 model 字段来区分业务模块。  
 数据库通用字段：
 ```
 id         [自增 ID]
