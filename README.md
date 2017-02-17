@@ -5,7 +5,7 @@ PHP rich app 是一套基于 CodeIgniter 的轻量级 PHP MVC 框架，用于团
 出于安全性考虑，本项目不开源。地址：https://git.oschina.net/zhaojintian/cms 。
 
 ## 案例
-https://richapp.cn/
+https://www.richapp.cn/
 
 ## 下载代码
 ```
