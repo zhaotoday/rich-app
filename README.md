@@ -78,12 +78,16 @@ if (!$this->_valid()) {
 }
 ```
 
-## 模型
+## 业务范例
+#### 模型
+application/model/Jobs_Model.php
 ```php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
 /**
- * 文章模型
+ * 岗位模型
  */
-class Articles_Model extends MY_Model
+class Jobs_Model extends MY_Model
 {
   /**
    * 构造方法
@@ -91,7 +95,7 @@ class Articles_Model extends MY_Model
   function __construct()
   {
     parent::__construct(array(
-      'table' => 'articles'
+      'table' => 'jobs'
     ));
   }
 }
