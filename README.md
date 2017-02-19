@@ -80,7 +80,7 @@ if (!$this->_valid()) {
 
 ## 业务范例
 #### 模型
-application/model/Jobs_Model.php
+application/models/Jobs_Model.php
 ```php
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -101,8 +101,79 @@ class Jobs_Model extends MY_Model
 }
 ```
 
-## 控制器
-待续
+#### 前台控制器
+application/controllers/Jobs.php
+```php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * 岗位控制器
+ */
+class Jobs extends Front_Controller
+{
+  /**
+   * 构造方法
+   */
+  function __construct()
+  {
+    parent::__construct();
+
+    detect();
+
+    $this->load->model('Categories_Model', 'categories');
+    $this->load->model('Jobs_Model', 'jobs');
+    $this->categories->cache = true;
+    $this->jobs->cache = true;
+  }
+
+  /**
+   * 详情 / 列表
+   * @param string $id ID
+   */
+  function index($id = '')
+  {
+    $settings = getSettings();
+
+    $data['settings'] = $settings;
+
+    if ($id) {
+      $row = $this->jobs->getRowById($id);
+
+      $data['current'] = 'job';
+      $data['title'] = $row->title . '_' . $settings->site_name;
+      $data['keywords'] = $row->title . ',' . $settings->keywords;
+      $data['description'] = '';
+      $data['row'] = $row;
+
+      $this->load->view('job', $data);
+    } else {
+      $categoryRows = $this->categories->getRows(array(
+        'where' => array(
+          'model' => 'JOBS'
+        ),
+        'order_by' => 'sort,id desc'
+      ));
+
+      foreach ($categoryRows as $categoryRow) {
+        $categoryRow->jobRows = $this->jobs->getRows(array(
+          'where' => array(
+            'category_id' => $categoryRow->id
+          )
+        ));
+      }
+
+      $data['current'] = 'jobs';
+      $data['title'] = '岗位列表_' . $settings->site_name;
+      $data['keywords'] = '岗位列表,' . $settings->keywords;
+      $data['description'] = '';
+
+      $data['categoryRows'] = $categoryRows;
+
+      $this->load->view('jobs', $data);
+    }
+  }
+}
+```
 
 ## 视图
 待续
