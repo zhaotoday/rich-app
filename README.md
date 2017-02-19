@@ -175,5 +175,61 @@ class Jobs extends Front_Controller
 }
 ```
 
-## 视图
-待续
+#### API 控制器
+application/controllers/apis/Jobs.php
+```php
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+require_once(APPPATH . 'libraries/REST_Controller.php');
+
+/**
+ * 岗位 API
+ */
+class Jobs extends REST_Controller
+{
+  function __construct()
+  {
+    parent::__construct();
+
+    $this->load->model('Jobs_Model', 'jobs');
+    $this->model = $this->jobs;
+    $this->modelCode = 'JOBS';
+    $this->addFields(['title', 'category_id']);
+  }
+
+  public function index_get($id = '')
+  {
+    if (!$this->_valid()) {
+      $this->_responseValidError();
+    } else {
+      $this->_index_get($id);
+    }
+  }
+
+  public function index_post()
+  {
+    if (!$this->_valid()) {
+      $this->_responseValidError();
+    } else {
+      $this->_index_post();
+    }
+  }
+
+  public function index_put($id)
+  {
+    if (!$this->_valid()) {
+      $this->_responseValidError();
+    } else {
+      $this->_index_put($id);
+    }
+  }
+
+  public function index_delete()
+  {
+    if (!$this->_valid()) {
+      $this->_responseValidError();
+    } else {
+      $this->_index_delete();
+    }
+  }
+}
+```
