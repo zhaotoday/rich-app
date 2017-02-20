@@ -107,15 +107,6 @@ application/controllers/Articles.php
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * 岗位控制器
- */
-class Jobs extends Front_Controller
-{
-  /**
-   * 构造方法
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
-/**
  * 文章控制器
  */
 class Articles extends Front_Controller
