@@ -80,14 +80,14 @@ if (!$this->_valid()) {
 
 ## 业务范例
 #### 模型
-application/models/Jobs_Model.php
+application/models/Articles_Model.php
 ```php
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * 岗位模型
+ * 文章模型
  */
-class Jobs_Model extends MY_Model
+class Articles_Model extends MY_Model
 {
   /**
    * 构造方法
@@ -95,14 +95,14 @@ class Jobs_Model extends MY_Model
   function __construct()
   {
     parent::__construct(array(
-      'table' => 'jobs'
+      'table' => 'articles'
     ));
   }
 }
 ```
 
 #### 前台控制器
-application/controllers/Jobs.php
+application/controllers/Articles.php
 ```php
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -113,17 +113,24 @@ class Jobs extends Front_Controller
 {
   /**
    * 构造方法
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * 文章控制器
+ */
+class Articles extends Front_Controller
+{
+  /**
+   * 构造方法
    */
   function __construct()
   {
     parent::__construct();
 
-    detect();
-
     $this->load->model('Categories_Model', 'categories');
-    $this->load->model('Jobs_Model', 'jobs');
+    $this->load->model('Articles_Model', 'articles');
     $this->categories->cache = true;
-    $this->jobs->cache = true;
+    $this->articles->cache = true;
   }
 
   /**
@@ -135,65 +142,60 @@ class Jobs extends Front_Controller
     $settings = getSettings();
 
     $data['settings'] = $settings;
+    $data['categoryRows'] = getCategories('ARTICLES');
 
     if ($id) {
-      $row = $this->jobs->getRowById($id);
+      $row = $this->articles->getRowById($id);
 
-      $data['current'] = 'job';
+      $data['current'] = 'article';
       $data['title'] = $row->title . '_' . $settings->site_name;
       $data['keywords'] = $row->title . ',' . $settings->keywords;
       $data['description'] = '';
       $data['row'] = $row;
 
-      $this->load->view('job', $data);
+      $this->load->view('article', $data);
     } else {
-      $categoryRows = $this->categories->getRows(array(
-        'where' => array(
-          'model' => 'JOBS'
-        ),
-        'order_by' => 'sort,id desc'
-      ));
+      $categoryId = $this->input->get()[ALIAS_CATEGORY_ID];
 
-      foreach ($categoryRows as $categoryRow) {
-        $categoryRow->jobRows = $this->jobs->getRows(array(
-          'where' => array(
-            'category_id' => $categoryRow->id
-          )
-        ));
-      }
+      $where = array(
+        'category_id' => $categoryId
+      );
 
-      $data['current'] = 'jobs';
-      $data['title'] = '岗位列表_' . $settings->site_name;
-      $data['keywords'] = '岗位列表,' . $settings->keywords;
+      $pagination = getPagination($this->articles, '/articles', $where);
+
+      $data['current'] = 'articles';
+      $data['title'] = '文章列表_' . $settings->site_name;
+      $data['keywords'] = '文章列表,' . $settings->keywords;
       $data['description'] = '';
+      $data['page'] = $pagination['page'];
+      $data['rows'] = $pagination['rows'];
+      $data['categoryRow'] = $this->categories->getRowById($categoryId);
 
-      $data['categoryRows'] = $categoryRows;
-
-      $this->load->view('jobs', $data);
+      $this->load->view('articles', $data);
     }
   }
 }
 ```
 
 #### API 控制器
-application/controllers/apis/Jobs.php
+application/controllers/apis/Articles.php
 ```php
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 require_once(APPPATH . 'libraries/REST_Controller.php');
 
 /**
- * 岗位 API
+ * 文章 API
  */
-class Jobs extends REST_Controller
+class Articles extends REST_Controller
 {
   function __construct()
   {
     parent::__construct();
 
-    $this->load->model('Jobs_Model', 'jobs');
-    $this->model = $this->jobs;
-    $this->modelCode = 'JOBS';
-    $this->addFields(['title', 'category_id']);
+    $this->load->model('Articles_Model', 'articles');
+    $this->model = $this->articles;
+    $this->modelCode = 'ARTICLES';
+    $this->addFields(['title']);
   }
 
   public function index_get($id = '')
@@ -201,7 +203,7 @@ class Jobs extends REST_Controller
     if (!$this->_valid()) {
       $this->_responseValidError();
     } else {
-      $this->_index_get($id);
+      $this->_index_get($id, $this->_get_args);
     }
   }
 
@@ -210,7 +212,7 @@ class Jobs extends REST_Controller
     if (!$this->_valid()) {
       $this->_responseValidError();
     } else {
-      $this->_index_post();
+      $this->_index_post($this->_post_args);
     }
   }
 
@@ -219,7 +221,7 @@ class Jobs extends REST_Controller
     if (!$this->_valid()) {
       $this->_responseValidError();
     } else {
-      $this->_index_put($id);
+      $this->_index_put($id, $this->_put_args);
     }
   }
 
