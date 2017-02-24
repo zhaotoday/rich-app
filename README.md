@@ -32,7 +32,7 @@ git clone https://git.oschina.net/zhaojintian/rich-app.git
 框架采用 redis 来减轻数据库访问压力，如果当前服务器的 PHP 环境未安装 redis 扩展，则不启用 redis 缓存。注意，如果访问页面响应时间较长，请检查服务器是否已启动 redis 服务。
 
 ## 移动端检测
-在控制器构造方法中调用 detect(); 可识别当前访问是否是来自移动端，并做相应跳转。
+在 Front_Controller 的构造方法中调用 detect(); 可识别当前访问是否是来自移动端，并做相应跳转。
 
 ## 访问图片文件
 ```
