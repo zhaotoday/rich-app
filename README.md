@@ -17,6 +17,7 @@ git clone https://git.oschina.net/zhaojintian/rich-app.git
 
 ## 业务模块
 - 分类（categories）
+- 标签（tags）
 - 文章（articles）
 - 文件（files）
 - 商铺（shops）
