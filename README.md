@@ -81,7 +81,11 @@ if (!$this->_valid()) {
 ```
 ## 表单校验
 数据入库前，需校验合法性。  
-加载校验类：$this->load->library('Validator', NULL, 'validator');。
+加载校验类：  
+```php
+$this->load->library('Validator', NULL, 'validator');
+```
+
 #### 中文
 ```php
 $this->validator->isChinese($test);
