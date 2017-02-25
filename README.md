@@ -84,7 +84,46 @@ if (!$this->_valid()) {
 加载校验类：$this->load->library('Validator', NULL, 'validator');。
 #### 中文
 ```php
-$this->validator->isChinese('我');
+$this->validator->isChinese($test);
+```
+
+#### 邮箱
+```php
+$this->validator->isEmail($test);
+```
+
+#### 身份证
+```php
+$this->validator->isIDCard($test);
+```
+
+#### 手机
+```php
+ $this->validator->isMobilePhone($test);
+```
+
+#### 电话
+```php
+$this->validator->isTelephone($test);
+```
+#### IP
+```php
+$this->validator->isIP($test);
+```
+
+#### 邮编
+```php
+$this->validator->isPostcode($test);
+```
+
+#### 长度不能小于
+```php
+$this->validator->min($test, $length);
+```
+
+#### 长度不能大于
+```php
+$this->validator->max($test, $length);
 ```
 
 ## 业务范例
