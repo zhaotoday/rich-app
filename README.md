@@ -33,6 +33,7 @@ git clone https://git.oschina.net/zhaojintian/rich-app.git
 - 订单（orders）
 - 岗位（jobs）
 - 会员（users）
+- 设置（settings）
 - 管理员（managers）
 - 滚动广告（sliders）
 
