@@ -144,10 +144,16 @@ $this->validator->max($test, $length);
 以下以 Articles 模块为例。
 
 #### 模型
+```
 application/models/Articles_Model.php
+```
 
 #### 前台控制器
+```
 application/controllers/Articles.php
+```
 
 #### API 控制器
+```
 application/controllers/apis/Articles.php
+```
