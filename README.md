@@ -29,7 +29,7 @@ git clone https://git.oschina.net/zhaojintian/rich-app.git
 - 文章（articles）
 - 文件（files）
 - 商铺（shops）
-- 商品（commodities）
+- 商品（products）
 - 订单（orders）
 - 岗位（jobs）
 - 会员（users）
