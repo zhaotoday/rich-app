@@ -64,10 +64,15 @@ define('CDN', '');
 define('STATIC_VERSION', 'v1.1');
 ```
 
-#### Redis 过期时间
-配置 Redis 过期时间，单位为：秒。
+#### Redis
+配置是否启用 Redis、Redis 主机、端口、过期时间等。
 ```php
-define('REDIS_EXPIRE', 60);
+define('REDIS', [
+  'ENABLED' => TRUE,
+  'EXPIRE' => 60,
+  'HOST' => '127.0.0.1',
+  'PORT' => '6379',
+]);
 ```
 
 ## 数据库
